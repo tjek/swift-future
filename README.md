@@ -8,7 +8,7 @@ The power of Futures is that they can be chained togther, producing a single Fut
 
 Furthermore, the work of this Future isnt done until you actually `run` the future.
 
-Here is an example of the kinds of complex logic possible with Futures. 
+Here is an example of the kinds of complex logic possible with Futures:
 
 ```swift
 struct User: Codable {
@@ -53,3 +53,14 @@ combinedFuture.run { result in
     print(result)
 } 
 ```
+
+
+Future areas to improve:
+
+- **Parallel(batch/zip)** - a future that performs multiple futures in parallel, and only completes once they all complete
+- **FutureOptional** - add tests and functionality similar to `Future<Result<_,_>>`
+- **Cancellable** - Somehow allow Futures to provide cancellable tokens.
+- **More utility extensions** 
+	- `UIImageView().setImage(Future<UIImage?>)`
+	- `CLGeocoder().geocode(...) -> FutureResult<[CLPlacemark]>`
+	- Maybe `CLLocationManager`... how to handle delegates? Future's arent the right thing for streams of events, I think. But sometimes we need 1-hit delegate calls.
