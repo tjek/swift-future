@@ -7,6 +7,8 @@
 //
 //  Copyright (c) 2019 ShopGun. All rights reserved.
 
+import Foundation
+
 public typealias FutureResult<Value> = Future<Swift.Result<Value, Error>>
 
 extension Future {
@@ -62,29 +64,21 @@ extension Future {
     }
     
     
-    public func zipResult<Success, OtherSuccess, Failure>(
+    public func zippedResult<Success, OtherSuccess, Failure>(
         _ other: Future<Result<OtherSuccess, Failure>>
         ) -> Future<Result<(Success, OtherSuccess), Failure>>
         where Response == Result<Success, Failure> {
             
-            return self.zipWithResult(other) { ($0, $1) }
+            return zipResult(self, other)
     }
     
-    public func zipWithResult<Success, OtherSuccess, FinalSuccess, Failure>(
+    public func zippedWithResult<Success, OtherSuccess, FinalSuccess, Failure>(
         _ other: Future<Result<OtherSuccess, Failure>>,
         _ combine: @escaping (Success, OtherSuccess) -> FinalSuccess
         ) -> Future<Result<FinalSuccess, Failure>>
         where Response == Result<Success, Failure> {
-                        
-            return self.zipWith(other) {
-                switch ($0, $1) {
-                case let (.success(a), .success(b)):
-                    return .success(combine(a, b))
-                case let (.failure(error), _),
-                     let (_, .failure(error)):
-                    return .failure(error)
-                }
-            }
+            
+            return zipResultWith(self, other, combine: combine)
     }
     
     public func observeResultSuccess<Success, Failure>(
@@ -107,5 +101,62 @@ extension Future {
                 callback($0)
                 return $0
             }
+    }
+}
+
+public func zipResult<A, B, Failure>(
+    _ a: Future<Result<A, Failure>>,
+    _ b: Future<Result<B, Failure>>,
+    completesOn completionQueue: DispatchQueue = .main
+    ) -> Future<Result<(A, B), Failure>> {
+    
+    return zipResultWith(a, b, completesOn: completionQueue) { ($0, $1) }
+}
+
+public func zipResultWith<A, B, FinalSuccess, Failure>(
+    _ a: Future<Result<A, Failure>>,
+    _ b: Future<Result<B, Failure>>,
+    completesOn completionQueue: DispatchQueue = .main,
+    combine: @escaping (A, B) -> FinalSuccess
+    ) -> Future<Result<FinalSuccess, Failure>> {
+    
+    return zipWith(a, b, completesOn: completionQueue) {
+        switch ($0, $1) {
+        case let (.success(a), .success(b)):
+            return .success(combine(a, b))
+        case let (.failure(error), _),
+             let (_, .failure(error)):
+            return .failure(error)
+        }
+    }
+}
+
+public func zipResult3<A, B, C, Failure>(
+    _ a: Future<Result<A, Failure>>,
+    _ b: Future<Result<B, Failure>>,
+    _ c: Future<Result<C, Failure>>,
+    completesOn completionQueue: DispatchQueue = .main
+    ) -> Future<Result<(A, B, C), Failure>> {
+    
+    return zipResult3With(a, b, c, completesOn: completionQueue) { ($0, $1, $2) }
+}
+
+public func zipResult3With<A, B, C, FinalSuccess, Failure>(
+    _ a: Future<Result<A, Failure>>,
+    _ b: Future<Result<B, Failure>>,
+    _ c: Future<Result<C, Failure>>,
+    completesOn completionQueue: DispatchQueue = .main,
+    combine: @escaping (A, B, C) -> FinalSuccess
+    ) -> Future<Result<FinalSuccess, Failure>> {
+    
+    return zip3With(a, b, c, completesOn: completionQueue) {
+        switch ($0, $1, $2) {
+        case let (.success(a), .success(b), .success(c)):
+            return .success(combine(a, b, c))
+        case let (.failure(error), _, _),
+             let (_, .failure(error), _),
+             let (_, _, .failure(error)):
+            return .failure(error)
+        }
     }
 }

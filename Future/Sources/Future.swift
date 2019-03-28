@@ -30,6 +30,9 @@ extension Future {
 
 extension Future {
     
+    /**
+     Transform the response of the reciever, once it has been run.
+     */
     public func map<NewResponse>(
         _ transform: @escaping (Response) -> NewResponse
         ) -> Future<NewResponse> {
@@ -41,6 +44,11 @@ extension Future {
         }
     }
     
+    /**
+     Transform the response of the reciever into a new future.
+     
+     This is the equivalent of "and then do this future".
+     */
     public func flatMap<NewResponse>(
         _ transform: @escaping (Response) -> Future<NewResponse>
         ) -> Future<NewResponse> {
@@ -52,33 +60,34 @@ extension Future {
         }
     }
     
-    public func zip<OtherResponse>(
-        _ other: Future<OtherResponse>
+    /**
+     Run both the receiver and the other Future, and once both are finished, combines the 2 responses into a tuple.
+     The completion callback is performed on the `completionQueue`, which is `.main` by default. default.
+     */
+    public func zipped<OtherResponse>(
+        _ other: Future<OtherResponse>,
+        completesOn completionQueue: DispatchQueue = .main
         ) -> Future<(Response, OtherResponse)> {
         
-        return Future<(Response, OtherResponse)> { callback in
-            let group = DispatchGroup()
-            var response: Response!
-            var otherResponse: OtherResponse!
-            group.enter()
-            self.run { response = $0; group.leave() }
-            group.enter()
-            other.run { otherResponse = $0; group.leave() }
-            
-            group.notify(queue: .global(), execute: {
-                callback((response, otherResponse))
-            })
-        }
+        return zipWith(self, other, completesOn: completionQueue) { ($0, $1) }
     }
     
-    public func zipWith<OtherResponse, FinalResponse>(
+    /**
+     Run both the receiver and the other Future, and once both are finished, allows you to combine the 2 responses into a final response type.
+     The completion callback is performed on the `completionQueue`, which is `.main` by default.
+     */
+    public func zippedWith<OtherResponse, FinalResponse>(
         _ other: Future<OtherResponse>,
-        _ combine: @escaping (Response, OtherResponse) -> FinalResponse
+        completesOn completionQueue: DispatchQueue = .main,
+        combine: @escaping (Response, OtherResponse) -> FinalResponse
         ) -> Future<FinalResponse> {
         
-        return self.zip(other).map(combine)
+        return zipWith(self, other, completesOn: completionQueue, combine: combine)
     }
     
+    /**
+     Allows you to observe the response of the future, without modifying it.
+     */
     public func observe(
         _ callback: @escaping (Response) -> Void
         ) -> Future {
@@ -131,7 +140,7 @@ extension Future {
 
 extension Future {
     
-    static func batch(_ futures: [Future<Response>], completesOn completionQueue: DispatchQueue = .main) -> Future<[Response]> {
+    public static func batch(_ futures: [Future<Response>], completesOn completionQueue: DispatchQueue = .main) -> Future<[Response]> {
         
         return Future<[Response]> { cb in
             
@@ -155,5 +164,74 @@ extension Future {
                 }
             }
         }
+    }
+}
+
+public func zip<A, B>(
+    _ a: Future<A>,
+    _ b: Future<B>,
+    completesOn completionQueue: DispatchQueue = .main
+    ) -> Future<(A, B)> {
+    
+    return zipWith(a, b, completesOn: completionQueue) { ($0, $1) }
+}
+
+public func zipWith<A, B, FinalResponse>(
+    _ a: Future<A>,
+    _ b: Future<B>,
+    completesOn completionQueue: DispatchQueue = .main,
+    combine: @escaping (A, B) -> FinalResponse
+    ) -> Future<FinalResponse> {
+    
+    return Future<FinalResponse> { callback in
+        let group = DispatchGroup()
+        var aRes: A!
+        var bRes: B!
+        
+        group.enter()
+        a.run { aRes = $0; group.leave() }
+        group.enter()
+        b.run { bRes = $0; group.leave() }
+        
+        group.notify(queue: completionQueue, execute: {
+            callback(combine(aRes, bRes))
+        })
+    }
+}
+
+public func zip3<A, B, C>(
+    _ a: Future<A>,
+    _ b: Future<B>,
+    _ c: Future<C>,
+    completesOn completionQueue: DispatchQueue = .main
+    ) -> Future<(A, B, C)> {
+    
+    return zip3With(a, b, c, completesOn: completionQueue) { ($0, $1, $2) }
+}
+
+public func zip3With<A, B, C, FinalResponse>(
+    _ a: Future<A>,
+    _ b: Future<B>,
+    _ c: Future<C>,
+    completesOn completionQueue: DispatchQueue = .main,
+    combine: @escaping (A, B, C) -> FinalResponse
+    ) -> Future<FinalResponse> {
+    
+    return Future<FinalResponse> { callback in
+        let group = DispatchGroup()
+        var aRes: A!
+        var bRes: B!
+        var cRes: C!
+        
+        group.enter()
+        a.run { aRes = $0; group.leave() }
+        group.enter()
+        b.run { bRes = $0; group.leave() }
+        group.enter()
+        c.run { cRes = $0; group.leave() }
+        
+        group.notify(queue: completionQueue, execute: {
+            callback(combine(aRes, bRes, cRes))
+        })
     }
 }

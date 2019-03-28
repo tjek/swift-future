@@ -135,7 +135,7 @@ extension URLSession {
         }
     }
     
-    public func dataTaskResult(with request: URLRequest) -> FutureResult<(Data, URLResponse)> {
+    public func dataTaskResult(with request: URLRequest) -> FutureResult<(data: Data, response: URLResponse)> {
         return dataTask(with: request).map({
             switch ($0.0, $0.1, $0.2) {
             case let (data?, response?, _):

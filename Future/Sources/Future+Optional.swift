@@ -51,21 +51,21 @@ extension Future {
             })
     }
     
-    public func zipOptional<Value, OtherValue>(
+    public func zippedOptional<Value, OtherValue>(
         _ other: Future<Optional<OtherValue>>
         ) -> Future<Optional<(Value, OtherValue)>>
         where Response == Optional<Value> {
             
-            return self.zipWithOptional(other) { ($0, $1) }
+            return self.zippedWithOptional(other) { ($0, $1) }
     }
     
-    public func zipWithOptional<Value, OtherValue, FinalValue>(
+    public func zippedWithOptional<Value, OtherValue, FinalValue>(
         _ other: Future<Optional<OtherValue>>,
         _ combine: @escaping (Value, OtherValue) -> FinalValue
         ) -> Future<Optional<FinalValue>>
         where Response == Optional<Value> {
             
-            return self.zipWith(other) {
+            return self.zippedWith(other) {
                 switch ($0, $1) {
                 case let (value?, otherValue?):
                     return combine(value, otherValue)
