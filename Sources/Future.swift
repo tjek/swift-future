@@ -136,30 +136,18 @@ extension Future {
     }
 }
 
-extension Future {
+/**
+ Performs the array of Futures in series, one after the other.
+ */
+public func batch<Response>(
+    _ futures: [Future<Response>]
+    ) -> Future<[Response]> {
     
-    public static func batch(
-        _ futures: [Future<Response>]
-        ) -> Future<[Response]> {
-        
-        return Future<[Response]> { cb in
-            
-            let group = DispatchGroup()
-            var responses: [Response?] = Array(repeating: nil, count: futures.count)
-            
-            for (idx, future) in futures.enumerated() {
-                group.enter()
-                
-                future.run { response in
-                    responses[idx] = response
-                    group.leave()
-                }
-            }
-            
-            group.wait()
-            cb(responses.map({ $0! }))
+    return futures.reduce(Future<[Response]>(value: []), { accumFuture, nextFuture in
+        accumFuture.flatMap { accumResponses in
+            nextFuture.map { accumResponses + [$0] }
         }
-    }
+    })
 }
 
 public func zip<A, B>(
@@ -170,7 +158,7 @@ public func zip<A, B>(
     return zipWith(a, b) { ($0, $1) }
 }
 
-/// Note: This will block the queue that it is called on, until all futures are finished. If the futures async onto the same queue that this is run on, it will deadlock.
+/// Performs Future<A>, then Future<B>, and then combines their responses.
 public func zipWith<A, B, FinalResponse>(
     _ a: Future<A>,
     _ b: Future<B>,
@@ -178,17 +166,11 @@ public func zipWith<A, B, FinalResponse>(
     ) -> Future<FinalResponse> {
     
     return Future<FinalResponse> { callback in
-        let group = DispatchGroup()
-        var aRes: A!
-        var bRes: B!
-        
-        group.enter()
-        a.run { aRes = $0; group.leave() }
-        group.enter()
-        b.run { bRes = $0; group.leave() }
-        
-        group.wait()
-        callback(combine(aRes, bRes))
+        a.run { aVal in
+            b.run { bVal in
+                callback(combine(aVal, bVal))
+            }
+        }
     }
 }
 
@@ -209,19 +191,12 @@ public func zip3With<A, B, C, FinalResponse>(
     ) -> Future<FinalResponse> {
     
     return Future<FinalResponse> { callback in
-        let group = DispatchGroup()
-        var aRes: A!
-        var bRes: B!
-        var cRes: C!
-        
-        group.enter()
-        a.run { aRes = $0; group.leave() }
-        group.enter()
-        b.run { bRes = $0; group.leave() }
-        group.enter()
-        c.run { cRes = $0; group.leave() }
-        
-        group.wait()
-        callback(combine(aRes, bRes, cRes))
+        a.run { aVal in
+            b.run { bVal in
+                c.run { cVal in
+                    callback(combine(aVal, bVal, cVal))
+                }
+            }
+        }
     }
 }

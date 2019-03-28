@@ -103,6 +103,28 @@ extension Future {
     }
 }
 
+/**
+ Performs the array of Futures in series, one after the other.
+ 
+ If _any_ of the futures fail, none of the remaining futures will be performed.
+ */
+public func batchResult<Success, Failure: Error>(
+    _ futures: [Future<Result<Success, Failure>>]
+    ) -> Future<Result<[Success], Failure>> {
+    
+    return futures.reduce(Future<Result<[Success], Failure>>(value: .success([])), { accumFuture, nextFuture in
+        accumFuture.flatMapResult { accumResponses in
+            nextFuture.mapResult { accumResponses + [$0] }
+        }
+    })
+}
+
+/**
+ Performs Future<Result<A>>, then performs Future<Result<B>>, in sequence.
+ 
+ If Future<Result<A>> fails, Future<Result<B>> will never be run.
+ Only if all Futures succeed will their success values be combined.
+ */
 public func zipResult<A, B, Failure>(
     _ a: Future<Result<A, Failure>>,
     _ b: Future<Result<B, Failure>>
@@ -117,13 +139,9 @@ public func zipResultWith<A, B, FinalSuccess, Failure>(
     combine: @escaping (A, B) -> FinalSuccess
     ) -> Future<Result<FinalSuccess, Failure>> {
     
-    return zipWith(a, b) {
-        switch ($0, $1) {
-        case let (.success(a), .success(b)):
-            return .success(combine(a, b))
-        case let (.failure(error), _),
-             let (_, .failure(error)):
-            return .failure(error)
+    return a.flatMapResult { aVal in
+        b.mapResult { bVal in
+            combine(aVal, bVal)
         }
     }
 }
@@ -144,14 +162,11 @@ public func zipResult3With<A, B, C, FinalSuccess, Failure>(
     combine: @escaping (A, B, C) -> FinalSuccess
     ) -> Future<Result<FinalSuccess, Failure>> {
     
-    return zip3With(a, b, c) {
-        switch ($0, $1, $2) {
-        case let (.success(a), .success(b), .success(c)):
-            return .success(combine(a, b, c))
-        case let (.failure(error), _, _),
-             let (_, .failure(error), _),
-             let (_, _, .failure(error)):
-            return .failure(error)
+    return a.flatMapResult { aVal in
+        b.flatMapResult { bVal in
+            c.mapResult { cVal in
+                combine(aVal, bVal, cVal)
+            }
         }
     }
 }

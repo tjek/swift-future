@@ -8,6 +8,8 @@ The power of Futures is that they can be chained togther, producing a single Fut
 
 Furthermore, the work of this Future isnt done until you actually `run` the future.
 
+Here is an example of the kinds of complex logic possible with Futures. 
+
 ```swift
 struct User: Codable {
     var id: String
@@ -37,8 +39,14 @@ let loadNetworkUser: FutureResult<User> = URLSession.shared
     .flatMapResult(User.decodeJSON(from:))
     
 // zip the 3 futures together and, if all successful, convert the response into a string.
-let combinedFuture = zipResult3With(loadStringFood, loadFileUser, loadNetworkUser) { (food: $0, user: $1, networkUser: $2) }
-    .mapResult({ "\($0.user.name) likes \($0.food.type) x\($0.food.tastiness)... networkUser: '\($0.networkUser.name)'"})
+let combinedFuture = zipResult3With(
+    loadStringFood,
+    loadFileUser,
+    loadNetworkUser
+) { (food: $0, user: $1, networkUser: $2) }
+    .mapResult({
+        "\($0.user.name) likes \($0.food.type) x\($0.food.tastiness)... networkUser: '\($0.networkUser.name)'"
+    })
     
 // once it is finally run, print the result
 combinedFuture.run { result in

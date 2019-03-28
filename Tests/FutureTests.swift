@@ -86,8 +86,7 @@ class FutureTests: XCTestCase {
         let futures = (0..<10).map(Future<Int>.init(value:))
         
         var resA: [Int] = []
-        Future
-            .batch(futures)
+        batch(futures)
             .run { resA = $0 }
         
         XCTAssertEqual(resA, Array(0..<10))
