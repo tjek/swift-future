@@ -12,6 +12,7 @@
 		AEF7A655224BCF6300D1D550 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A653224BCF6300D1D550 /* Future.swift */; };
 		AEF7A657224BCF7400D1D550 /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A656224BCF7400D1D550 /* Future+Result.swift */; };
 		AEF7A659224BCFD700D1D550 /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A658224BCFD700D1D550 /* Future+Optional.swift */; };
+		AEF7A65D224CB3E000D1D550 /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A65C224CB3E000D1D550 /* Future+Foundation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		AEF7A653224BCF6300D1D550 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		AEF7A656224BCF7400D1D550 /* Future+Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Result.swift"; sourceTree = "<group>"; };
 		AEF7A658224BCFD700D1D550 /* Future+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Optional.swift"; sourceTree = "<group>"; };
+		AEF7A65C224CB3E000D1D550 /* Future+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Foundation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				AEF7A653224BCF6300D1D550 /* Future.swift */,
 				AEF7A656224BCF7400D1D550 /* Future+Result.swift */,
 				AEF7A658224BCFD700D1D550 /* Future+Optional.swift */,
+				AEF7A65C224CB3E000D1D550 /* Future+Foundation.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				AEF7A659224BCFD700D1D550 /* Future+Optional.swift in Sources */,
 				AEF7A657224BCF7400D1D550 /* Future+Result.swift in Sources */,
 				AEF7A655224BCF6300D1D550 /* Future.swift in Sources */,
+				AEF7A65D224CB3E000D1D550 /* Future+Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
