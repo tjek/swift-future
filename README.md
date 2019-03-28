@@ -1,14 +1,14 @@
-# swift-future
-🕰 A simple Future type in Swift
+# 🕰 Future
 
-A Future just represents some 'work', that _may_ take some time (or not).
+[![Swift 5](https://img.shields.io/badge/swift-5-ED523F.svg?style=flat)](https://swift.org/download/)
+
+A `Future` just represents some 'work', that _may_ take some time (or not).
 
 The power of Futures is that they can be chained togther, producing a single Future object that contains all the work of all the component Futures. 
 
 Furthermore, the work of this Future isnt done until you actually `run` the future.
 
 ```swift
-
 struct User: Codable {
     var id: String
     var name: String
@@ -43,6 +43,5 @@ let combinedFuture = zipResult3With(loadStringFood, loadFileUser, loadNetworkUse
 // once it is finally run, print the result
 combinedFuture.run { result in
     print(result)
-}
-    
+} 
 ```
