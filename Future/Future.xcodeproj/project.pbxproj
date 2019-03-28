@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AEF7A640224BCEB700D1D550 /* Future_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF7A636224BCEB700D1D550 /* Future_iOS.framework */; };
 		AEF7A645224BCEB700D1D550 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A644224BCEB700D1D550 /* FutureTests.swift */; };
-		AEF7A654224BCF6300D1D550 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A652224BCF6300D1D550 /* Result+Extensions.swift */; };
 		AEF7A655224BCF6300D1D550 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A653224BCF6300D1D550 /* Future.swift */; };
 		AEF7A657224BCF7400D1D550 /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A656224BCF7400D1D550 /* Future+Result.swift */; };
 		AEF7A659224BCFD700D1D550 /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF7A658224BCFD700D1D550 /* Future+Optional.swift */; };
@@ -30,7 +29,6 @@
 		AEF7A63F224BCEB700D1D550 /* FutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF7A644224BCEB700D1D550 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 		AEF7A646224BCEB700D1D550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEF7A652224BCF6300D1D550 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		AEF7A653224BCF6300D1D550 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		AEF7A656224BCF7400D1D550 /* Future+Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Result.swift"; sourceTree = "<group>"; };
 		AEF7A658224BCFD700D1D550 /* Future+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Optional.swift"; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				AEF7A653224BCF6300D1D550 /* Future.swift */,
 				AEF7A656224BCF7400D1D550 /* Future+Result.swift */,
 				AEF7A658224BCFD700D1D550 /* Future+Optional.swift */,
-				AEF7A652224BCF6300D1D550 /* Result+Extensions.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -203,7 +200,6 @@
 				AEF7A659224BCFD700D1D550 /* Future+Optional.swift in Sources */,
 				AEF7A657224BCF7400D1D550 /* Future+Result.swift in Sources */,
 				AEF7A655224BCF6300D1D550 /* Future.swift in Sources */,
-				AEF7A654224BCF6300D1D550 /* Result+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

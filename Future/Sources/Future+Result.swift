@@ -62,21 +62,29 @@ extension Future {
     }
     
     
-    public func zip<Success, OtherSuccess, Failure>(
+    public func zipResult<Success, OtherSuccess, Failure>(
         _ other: Future<Result<OtherSuccess, Failure>>
         ) -> Future<Result<(Success, OtherSuccess), Failure>>
         where Response == Result<Success, Failure> {
             
-            return self.zipWith(other) { $0.zip($1) }
+            return self.zipWithResult(other) { ($0, $1) }
     }
     
-    public func zipWith<Success, OtherSuccess, FinalSuccess, Failure>(
+    public func zipWithResult<Success, OtherSuccess, FinalSuccess, Failure>(
         _ other: Future<Result<OtherSuccess, Failure>>,
         _ combine: @escaping (Success, OtherSuccess) -> FinalSuccess
         ) -> Future<Result<FinalSuccess, Failure>>
         where Response == Result<Success, Failure> {
-            
-            return self.zipWith(other) { $0.zipWith($1, combine) }
+                        
+            return self.zipWith(other) {
+                switch ($0, $1) {
+                case let (.success(a), .success(b)):
+                    return .success(combine(a, b))
+                case let (.failure(error), _),
+                     let (_, .failure(error)):
+                    return .failure(error)
+                }
+            }
     }
     
     public func observeResultSuccess<Success, Failure>(
@@ -101,5 +109,3 @@ extension Future {
             }
     }
 }
-
-// TODO: mapCollection 

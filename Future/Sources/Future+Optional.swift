@@ -7,6 +7,8 @@
 //
 //  Copyright (c) 2019 ShopGun. All rights reserved.
 
+public typealias FutureOptional<Value> = Future<Optional<Value>>
+
 extension Future {
     
     public func mapOptional<Value, NewValue>(
@@ -49,22 +51,22 @@ extension Future {
             })
     }
     
-    public func zip<Value, OtherValue>(
+    public func zipOptional<Value, OtherValue>(
         _ other: Future<Optional<OtherValue>>
         ) -> Future<Optional<(Value, OtherValue)>>
         where Response == Optional<Value> {
             
-            return self.zipWith(other) { ($0, $1) }
+            return self.zipWithOptional(other) { ($0, $1) }
     }
     
-    public func zipWith<Value, OtherValue, FinalValue>(
+    public func zipWithOptional<Value, OtherValue, FinalValue>(
         _ other: Future<Optional<OtherValue>>,
         _ combine: @escaping (Value, OtherValue) -> FinalValue
         ) -> Future<Optional<FinalValue>>
         where Response == Optional<Value> {
             
-            return self.zipWith(other) { (a: Value?, b: OtherValue?) -> FinalValue? in
-                switch (a, b) {
+            return self.zipWith(other) {
+                switch ($0, $1) {
                 case let (value?, otherValue?):
                     return combine(value, otherValue)
                 default:
