@@ -65,11 +65,10 @@ extension Future {
      The completion callback is performed on the `completionQueue`, which is `.main` by default. default.
      */
     public func zipped<OtherResponse>(
-        _ other: Future<OtherResponse>,
-        completesOn completionQueue: DispatchQueue = .main
+        _ other: Future<OtherResponse>
         ) -> Future<(Response, OtherResponse)> {
         
-        return zipWith(self, other, completesOn: completionQueue) { ($0, $1) }
+        return zip(self, other)
     }
     
     /**
@@ -78,11 +77,10 @@ extension Future {
      */
     public func zippedWith<OtherResponse, FinalResponse>(
         _ other: Future<OtherResponse>,
-        completesOn completionQueue: DispatchQueue = .main,
         combine: @escaping (Response, OtherResponse) -> FinalResponse
         ) -> Future<FinalResponse> {
         
-        return zipWith(self, other, completesOn: completionQueue, combine: combine)
+        return zipWith(self, other, combine: combine)
     }
     
     /**
@@ -140,7 +138,9 @@ extension Future {
 
 extension Future {
     
-    public static func batch(_ futures: [Future<Response>], completesOn completionQueue: DispatchQueue = .main) -> Future<[Response]> {
+    public static func batch(
+        _ futures: [Future<Response>]
+        ) -> Future<[Response]> {
         
         return Future<[Response]> { cb in
             
@@ -156,30 +156,24 @@ extension Future {
                 }
             }
             
-            group.notify(queue: .global()) {
-                let finalResponses = responses.map({ $0! })
-                
-                completionQueue.async {
-                    cb(finalResponses)
-                }
-            }
+            group.wait()
+            cb(responses.map({ $0! }))
         }
     }
 }
 
 public func zip<A, B>(
     _ a: Future<A>,
-    _ b: Future<B>,
-    completesOn completionQueue: DispatchQueue = .main
+    _ b: Future<B>
     ) -> Future<(A, B)> {
     
-    return zipWith(a, b, completesOn: completionQueue) { ($0, $1) }
+    return zipWith(a, b) { ($0, $1) }
 }
 
+/// Note: This will block the queue that it is called on, until all futures are finished. If the futures async onto the same queue that this is run on, it will deadlock.
 public func zipWith<A, B, FinalResponse>(
     _ a: Future<A>,
     _ b: Future<B>,
-    completesOn completionQueue: DispatchQueue = .main,
     combine: @escaping (A, B) -> FinalResponse
     ) -> Future<FinalResponse> {
     
@@ -193,27 +187,24 @@ public func zipWith<A, B, FinalResponse>(
         group.enter()
         b.run { bRes = $0; group.leave() }
         
-        group.notify(queue: completionQueue, execute: {
-            callback(combine(aRes, bRes))
-        })
+        group.wait()
+        callback(combine(aRes, bRes))
     }
 }
 
 public func zip3<A, B, C>(
     _ a: Future<A>,
     _ b: Future<B>,
-    _ c: Future<C>,
-    completesOn completionQueue: DispatchQueue = .main
+    _ c: Future<C>
     ) -> Future<(A, B, C)> {
     
-    return zip3With(a, b, c, completesOn: completionQueue) { ($0, $1, $2) }
+    return zip3With(a, b, c) { ($0, $1, $2) }
 }
 
 public func zip3With<A, B, C, FinalResponse>(
     _ a: Future<A>,
     _ b: Future<B>,
     _ c: Future<C>,
-    completesOn completionQueue: DispatchQueue = .main,
     combine: @escaping (A, B, C) -> FinalResponse
     ) -> Future<FinalResponse> {
     
@@ -230,8 +221,7 @@ public func zip3With<A, B, C, FinalResponse>(
         group.enter()
         c.run { cRes = $0; group.leave() }
         
-        group.notify(queue: completionQueue, execute: {
-            callback(combine(aRes, bRes, cRes))
-        })
+        group.wait()
+        callback(combine(aRes, bRes, cRes))
     }
 }

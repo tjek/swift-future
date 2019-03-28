@@ -63,7 +63,6 @@ extension Future {
             })
     }
     
-    
     public func zippedResult<Success, OtherSuccess, Failure>(
         _ other: Future<Result<OtherSuccess, Failure>>
         ) -> Future<Result<(Success, OtherSuccess), Failure>>
@@ -106,21 +105,19 @@ extension Future {
 
 public func zipResult<A, B, Failure>(
     _ a: Future<Result<A, Failure>>,
-    _ b: Future<Result<B, Failure>>,
-    completesOn completionQueue: DispatchQueue = .main
+    _ b: Future<Result<B, Failure>>
     ) -> Future<Result<(A, B), Failure>> {
     
-    return zipResultWith(a, b, completesOn: completionQueue) { ($0, $1) }
+    return zipResultWith(a, b) { ($0, $1) }
 }
 
 public func zipResultWith<A, B, FinalSuccess, Failure>(
     _ a: Future<Result<A, Failure>>,
     _ b: Future<Result<B, Failure>>,
-    completesOn completionQueue: DispatchQueue = .main,
     combine: @escaping (A, B) -> FinalSuccess
     ) -> Future<Result<FinalSuccess, Failure>> {
     
-    return zipWith(a, b, completesOn: completionQueue) {
+    return zipWith(a, b) {
         switch ($0, $1) {
         case let (.success(a), .success(b)):
             return .success(combine(a, b))
@@ -134,22 +131,20 @@ public func zipResultWith<A, B, FinalSuccess, Failure>(
 public func zipResult3<A, B, C, Failure>(
     _ a: Future<Result<A, Failure>>,
     _ b: Future<Result<B, Failure>>,
-    _ c: Future<Result<C, Failure>>,
-    completesOn completionQueue: DispatchQueue = .main
+    _ c: Future<Result<C, Failure>>
     ) -> Future<Result<(A, B, C), Failure>> {
     
-    return zipResult3With(a, b, c, completesOn: completionQueue) { ($0, $1, $2) }
+    return zipResult3With(a, b, c) { ($0, $1, $2) }
 }
 
 public func zipResult3With<A, B, C, FinalSuccess, Failure>(
     _ a: Future<Result<A, Failure>>,
     _ b: Future<Result<B, Failure>>,
     _ c: Future<Result<C, Failure>>,
-    completesOn completionQueue: DispatchQueue = .main,
     combine: @escaping (A, B, C) -> FinalSuccess
     ) -> Future<Result<FinalSuccess, Failure>> {
     
-    return zip3With(a, b, c, completesOn: completionQueue) {
+    return zip3With(a, b, c) {
         switch ($0, $1, $2) {
         case let (.success(a), .success(b), .success(c)):
             return .success(combine(a, b, c))

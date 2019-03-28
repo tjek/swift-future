@@ -10,6 +10,7 @@ targets:
   Future:
     platform: [iOS, tvOS, macOS, watchOS]
     scheme:
+      gatherCoverageData: true
       testTargets: ['FutureTests_${platform}']
     templates: 
       - Framework
@@ -26,7 +27,6 @@ targets:
 targetTemplates:
   Framework:
     type: framework
-    gatherCoverageData: true
     settings:
       SWIFT_VERSION: 5.0
     sources: 
