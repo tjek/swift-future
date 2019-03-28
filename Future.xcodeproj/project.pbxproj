@@ -1,0 +1,957 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03104AF836133606A5ADFD23321EE6F8 /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1527A6CC3DD96F8D87B3DEC3B9951CFA /* Future.framework */; };
+		0B96FAE997789736DCCED252D8FAE349 /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
+		0D174047302BD3FE077E5DE470862EBE /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
+		13F4878F631186838FA5002A2725E0AF /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */; };
+		19FC6C4C68E9B9F4E3F9C2CD3473CD9C /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
+		1E9833B35AEA1C0D60B4BC747D545528 /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */; };
+		1FF343950ECE69826DF2B54E2158F6DE /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */; };
+		21A82C6176EDE37E44332DA3FDAF49AB /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */; };
+		2D346CA41FAEDF303B88E64213403C83 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56857160C6093518C610D2808494173 /* Future.swift */; };
+		2E3CEAD3B623922E97E4C34E6DA90455 /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */; };
+		35B91E4FE835221AFC8C5A7542D47EA7 /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */; };
+		40F9F77BAF6E0FB3711263363027C50C /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */; };
+		43E11AA923E9C4C94101B1AA0933259A /* Future.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		485D7D1EC277ADB8AE2FAFF5017320DE /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56857160C6093518C610D2808494173 /* Future.swift */; };
+		48A071EDE64907E4734A379DEE104A71 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56857160C6093518C610D2808494173 /* Future.swift */; };
+		52123952D7ED8CEC0FAFC57F7C868C11 /* Future.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1527A6CC3DD96F8D87B3DEC3B9951CFA /* Future.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CBE6AF28F3B5869DA98B9FB1ADB5ED9 /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7997B1791C0E84016C20DB8132636F8C /* Future.framework */; };
+		6E88403B18ED7DC21E00E23C7CDD04D0 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
+		91F6F83EA3812E6E78B55585A7C2B267 /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB1109224ACCBEF7C36B15F2E541CBA /* Future.framework */; };
+		95CE3AFA21C43C361881AA85B62F216A /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
+		B5BFCF10CE238D83A7F022FDB8E85D6C /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */; };
+		B8122AB8372C4E9263ABCAA59060BFEB /* Future.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB1109224ACCBEF7C36B15F2E541CBA /* Future.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B907C5D327DBF21B5B870D813AC2D280 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
+		E2E76E0D8FD53369EDBF032BC9C78DBC /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */; };
+		E35E6E2553862C015F4BE187BA22F464 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
+		E5F5052EA7D967FF849E69738BA6E7B3 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56857160C6093518C610D2808494173 /* Future.swift */; };
+		EEDA6690A357E5024F6CD715C9037029 /* Future.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7997B1791C0E84016C20DB8132636F8C /* Future.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC5B4098AD17CEC56BDEECA6F206AD47 /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20AAFABC2CEFEE62FE764159C780F8CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 093334B50A93B86EBF5A9627CA6BFEA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C7A825D5928E0D81C9E9BCF44D74F9F;
+			remoteInfo = Future_watchOS;
+		};
+		763203D099A4C4C366C1BC82C5815B35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 093334B50A93B86EBF5A9627CA6BFEA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B1FF680260D9D7293B9067582076B4A;
+			remoteInfo = Future_tvOS;
+		};
+		E23F418121AF60BBC24F0C74AEE24DA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 093334B50A93B86EBF5A9627CA6BFEA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F369621451E58A0F439993691A2C5AD7;
+			remoteInfo = Future_iOS;
+		};
+		F3501474B4A2854302B0A45ACC9A9B81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 093334B50A93B86EBF5A9627CA6BFEA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 021282480E8CFB5ED5EE4E493F24E924;
+			remoteInfo = Future_macOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		32C8CCE37F72739C2BF1E3DE6EC0B75A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B8122AB8372C4E9263ABCAA59060BFEB /* Future.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82790C9EC5DAED16ADFC8414CDDA4240 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				43E11AA923E9C4C94101B1AA0933259A /* Future.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99911D344DDE55044BE59B2564BAF2C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EEDA6690A357E5024F6CD715C9037029 /* Future.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA757BCF79C69AB0749653D5F65A846B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				52123952D7ED8CEC0FAFC57F7C868C11 /* Future.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1527A6CC3DD96F8D87B3DEC3B9951CFA /* Future.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Future.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D8C9DBC8643655983272B2EC9C59C26 /* FutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41348563C46E4EAFB7616C27012ED241 /* FutureTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DB1109224ACCBEF7C36B15F2E541CBA /* Future.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Future.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A5DF8493A9C9CC3810049AF77CFE228 /* FutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Result.swift"; sourceTree = "<group>"; };
+		7997B1791C0E84016C20DB8132636F8C /* Future.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Future.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
+		A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Future.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A56857160C6093518C610D2808494173 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Foundation.swift"; sourceTree = "<group>"; };
+		CF4AA6334CC33D910289C1FBBE694222 /* FutureTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Optional.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F0BF9DB6866A29FD0025F5822325AF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03104AF836133606A5ADFD23321EE6F8 /* Future.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8D193A5C6A3329B9116073A6D16A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91F6F83EA3812E6E78B55585A7C2B267 /* Future.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		825310DF7398D4FCDC3EA0C40A333074 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CBE6AF28F3B5869DA98B9FB1ADB5ED9 /* Future.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0D0766C1EF9F6BD7B95072EBDB8E2E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2E76E0D8FD53369EDBF032BC9C78DBC /* Future.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1ACF039B745CAC659EBCA28012211DCE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		61389617D57006C479AFB34287FE1A08 = {
+			isa = PBXGroup;
+			children = (
+				7AA44D8B96AE14962CADC97865761709 /* Sources */,
+				1ACF039B745CAC659EBCA28012211DCE /* Tests */,
+				D19DB8EC7518668C421A246DBAE0C8AD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7AA44D8B96AE14962CADC97865761709 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A56857160C6093518C610D2808494173 /* Future.swift */,
+				C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */,
+				DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */,
+				78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D19DB8EC7518668C421A246DBAE0C8AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7997B1791C0E84016C20DB8132636F8C /* Future.framework */,
+				5DB1109224ACCBEF7C36B15F2E541CBA /* Future.framework */,
+				A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */,
+				1527A6CC3DD96F8D87B3DEC3B9951CFA /* Future.framework */,
+				CF4AA6334CC33D910289C1FBBE694222 /* FutureTests.xctest */,
+				6A5DF8493A9C9CC3810049AF77CFE228 /* FutureTests.xctest */,
+				41348563C46E4EAFB7616C27012ED241 /* FutureTests.xctest */,
+				1D8C9DBC8643655983272B2EC9C59C26 /* FutureTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		021282480E8CFB5ED5EE4E493F24E924 /* Future_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59504F2AB204C0E9E4BE4D850316E0DA /* Build configuration list for PBXNativeTarget "Future_macOS" */;
+			buildPhases = (
+				84826787E8E3E70F1E53F0DA21818C8C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Future_macOS;
+			productName = Future_macOS;
+			productReference = 5DB1109224ACCBEF7C36B15F2E541CBA /* Future.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0C7A825D5928E0D81C9E9BCF44D74F9F /* Future_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B4DFA9C6BD0C9F345B4CFD5D3A1BDD6 /* Build configuration list for PBXNativeTarget "Future_watchOS" */;
+			buildPhases = (
+				F67003413D3560E5933D644D0AE2597A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Future_watchOS;
+			productName = Future_watchOS;
+			productReference = 1527A6CC3DD96F8D87B3DEC3B9951CFA /* Future.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		237AB5F65C20B3571775D69EE5D137C6 /* FutureTests_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C2672B626C511C8C29DE2FDE46D5021 /* Build configuration list for PBXNativeTarget "FutureTests_macOS" */;
+			buildPhases = (
+				058F4F47E9069187CEAC70CD5180411D /* Sources */,
+				7F8D193A5C6A3329B9116073A6D16A46 /* Frameworks */,
+				32C8CCE37F72739C2BF1E3DE6EC0B75A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1F2DDF7F9C38E479FE30B25507E5C13 /* PBXTargetDependency */,
+			);
+			name = FutureTests_macOS;
+			productName = FutureTests_macOS;
+			productReference = 6A5DF8493A9C9CC3810049AF77CFE228 /* FutureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		792CECB9CB6C44885B1DF27C22B595F6 /* FutureTests_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB69BAEA47946AAEE36D12CEE2DBCE73 /* Build configuration list for PBXNativeTarget "FutureTests_iOS" */;
+			buildPhases = (
+				12E708C6DD6C162089DC00C09D8C25CD /* Sources */,
+				825310DF7398D4FCDC3EA0C40A333074 /* Frameworks */,
+				A99911D344DDE55044BE59B2564BAF2C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6ECFF1C30E1DF7C2842B9B8476D31BB0 /* PBXTargetDependency */,
+			);
+			name = FutureTests_iOS;
+			productName = FutureTests_iOS;
+			productReference = CF4AA6334CC33D910289C1FBBE694222 /* FutureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		95F8F4CF4ED46C4F67F548B3BDEE6C81 /* FutureTests_tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98593729874236B085ACCC37D25B94C /* Build configuration list for PBXNativeTarget "FutureTests_tvOS" */;
+			buildPhases = (
+				459C10EBCA194B8F72D7ABEA1E493C67 /* Sources */,
+				B0D0766C1EF9F6BD7B95072EBDB8E2E8 /* Frameworks */,
+				82790C9EC5DAED16ADFC8414CDDA4240 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BEF6BBAE8DD0925FDC8989DEDD5C3D2 /* PBXTargetDependency */,
+			);
+			name = FutureTests_tvOS;
+			productName = FutureTests_tvOS;
+			productReference = 41348563C46E4EAFB7616C27012ED241 /* FutureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9B1FF680260D9D7293B9067582076B4A /* Future_tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E9BA2EE07C3DE03BD661324E0290C74 /* Build configuration list for PBXNativeTarget "Future_tvOS" */;
+			buildPhases = (
+				6D2293DA6B4D71396B1A1E3144554818 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Future_tvOS;
+			productName = Future_tvOS;
+			productReference = A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A56606CB55AA15F37CDADDCE6EA8D72D /* FutureTests_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54183B99CB662DBF3BD748C541F1CA5B /* Build configuration list for PBXNativeTarget "FutureTests_watchOS" */;
+			buildPhases = (
+				D70F96D81BACA4267F32A2FAD0BC3A0F /* Sources */,
+				2F0BF9DB6866A29FD0025F5822325AF7 /* Frameworks */,
+				CA757BCF79C69AB0749653D5F65A846B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A1628F601A4083041ED7C1D8E4A9CE1 /* PBXTargetDependency */,
+			);
+			name = FutureTests_watchOS;
+			productName = FutureTests_watchOS;
+			productReference = 1D8C9DBC8643655983272B2EC9C59C26 /* FutureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F369621451E58A0F439993691A2C5AD7 /* Future_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0AB5F39BCDF5F25903B57151E93F6961 /* Build configuration list for PBXNativeTarget "Future_iOS" */;
+			buildPhases = (
+				6F78E4C75D1A12F14CE9317597A3BA4E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Future_iOS;
+			productName = Future_iOS;
+			productReference = 7997B1791C0E84016C20DB8132636F8C /* Future.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		093334B50A93B86EBF5A9627CA6BFEA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+			};
+			buildConfigurationList = 02EDB247B857858BFA7A5843CED6A799 /* Build configuration list for PBXProject "Future" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 61389617D57006C479AFB34287FE1A08;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				792CECB9CB6C44885B1DF27C22B595F6 /* FutureTests_iOS */,
+				237AB5F65C20B3571775D69EE5D137C6 /* FutureTests_macOS */,
+				95F8F4CF4ED46C4F67F548B3BDEE6C81 /* FutureTests_tvOS */,
+				A56606CB55AA15F37CDADDCE6EA8D72D /* FutureTests_watchOS */,
+				F369621451E58A0F439993691A2C5AD7 /* Future_iOS */,
+				021282480E8CFB5ED5EE4E493F24E924 /* Future_macOS */,
+				9B1FF680260D9D7293B9067582076B4A /* Future_tvOS */,
+				0C7A825D5928E0D81C9E9BCF44D74F9F /* Future_watchOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		058F4F47E9069187CEAC70CD5180411D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19FC6C4C68E9B9F4E3F9C2CD3473CD9C /* FutureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E708C6DD6C162089DC00C09D8C25CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B907C5D327DBF21B5B870D813AC2D280 /* FutureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		459C10EBCA194B8F72D7ABEA1E493C67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35E6E2553862C015F4BE187BA22F464 /* FutureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D2293DA6B4D71396B1A1E3144554818 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40F9F77BAF6E0FB3711263363027C50C /* Future+Foundation.swift in Sources */,
+				21A82C6176EDE37E44332DA3FDAF49AB /* Future+Optional.swift in Sources */,
+				0D174047302BD3FE077E5DE470862EBE /* Future+Result.swift in Sources */,
+				E5F5052EA7D967FF849E69738BA6E7B3 /* Future.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F78E4C75D1A12F14CE9317597A3BA4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5BFCF10CE238D83A7F022FDB8E85D6C /* Future+Foundation.swift in Sources */,
+				1FF343950ECE69826DF2B54E2158F6DE /* Future+Optional.swift in Sources */,
+				95CE3AFA21C43C361881AA85B62F216A /* Future+Result.swift in Sources */,
+				485D7D1EC277ADB8AE2FAFF5017320DE /* Future.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84826787E8E3E70F1E53F0DA21818C8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13F4878F631186838FA5002A2725E0AF /* Future+Foundation.swift in Sources */,
+				2E3CEAD3B623922E97E4C34E6DA90455 /* Future+Optional.swift in Sources */,
+				FC5B4098AD17CEC56BDEECA6F206AD47 /* Future+Result.swift in Sources */,
+				2D346CA41FAEDF303B88E64213403C83 /* Future.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70F96D81BACA4267F32A2FAD0BC3A0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E88403B18ED7DC21E00E23C7CDD04D0 /* FutureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F67003413D3560E5933D644D0AE2597A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E9833B35AEA1C0D60B4BC747D545528 /* Future+Foundation.swift in Sources */,
+				35B91E4FE835221AFC8C5A7542D47EA7 /* Future+Optional.swift in Sources */,
+				0B96FAE997789736DCCED252D8FAE349 /* Future+Result.swift in Sources */,
+				48A071EDE64907E4734A379DEE104A71 /* Future.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BEF6BBAE8DD0925FDC8989DEDD5C3D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B1FF680260D9D7293B9067582076B4A /* Future_tvOS */;
+			targetProxy = 763203D099A4C4C366C1BC82C5815B35 /* PBXContainerItemProxy */;
+		};
+		3A1628F601A4083041ED7C1D8E4A9CE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C7A825D5928E0D81C9E9BCF44D74F9F /* Future_watchOS */;
+			targetProxy = 20AAFABC2CEFEE62FE764159C780F8CA /* PBXContainerItemProxy */;
+		};
+		6ECFF1C30E1DF7C2842B9B8476D31BB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F369621451E58A0F439993691A2C5AD7 /* Future_iOS */;
+			targetProxy = E23F418121AF60BBC24F0C74AEE24DA1 /* PBXContainerItemProxy */;
+		};
+		B1F2DDF7F9C38E479FE30B25507E5C13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 021282480E8CFB5ED5EE4E493F24E924 /* Future_macOS */;
+			targetProxy = F3501474B4A2854302B0A45ACC9A9B81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		20AAAF782898167D579088E99EE8533A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		2E3DA9EE34AD5193C363B5FAF79FBA0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-macOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		2E7763B8AE165E5E2CDA7BF7644AE5CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		40826EC06923DAE127AFE08FFC7410BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-tvOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		463838056B2ADAD1E2B1C9E631A146C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-macOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5233CE3C508971622AF52E549E8A5969 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-iOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		66F44B286BA861E614BA404B93F21854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-macOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		700DBB59D9D1F107911CB25C0F3E9317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-iOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		A66841F754A177F5303252204CC92C31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-macOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A7B2D1A62A523B4DA8889E8085100209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-watchOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		B71843D14D330ECEF3D6137CDB7A19B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-tvOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		C52DADE62F487E07C5CBC15587C93D95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-watchOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		C92A47D7B9D4D655EB9F53A1B93BE29A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-iOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE8576222194A218CBB7AC54F6EF8CA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-watchOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		D435B49CB579CEDE37C505F5DFF62881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-tvOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+		DFF2E48CCA031C202A5F3D1425473000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-iOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E464FC38513CDD593ACA14974A5C6A39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.Future-watchOS";
+				PRODUCT_NAME = Future;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		F8F8CAEEB1C6E16CBF9D187BAA7D0821 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shopgun.FutureTests-tvOS";
+				PRODUCT_NAME = FutureTests;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02EDB247B857858BFA7A5843CED6A799 /* Build configuration list for PBXProject "Future" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E7763B8AE165E5E2CDA7BF7644AE5CA /* Debug */,
+				20AAAF782898167D579088E99EE8533A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		0AB5F39BCDF5F25903B57151E93F6961 /* Build configuration list for PBXNativeTarget "Future_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				700DBB59D9D1F107911CB25C0F3E9317 /* Debug */,
+				5233CE3C508971622AF52E549E8A5969 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		0B4DFA9C6BD0C9F345B4CFD5D3A1BDD6 /* Build configuration list for PBXNativeTarget "Future_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E464FC38513CDD593ACA14974A5C6A39 /* Debug */,
+				C52DADE62F487E07C5CBC15587C93D95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		1C2672B626C511C8C29DE2FDE46D5021 /* Build configuration list for PBXNativeTarget "FutureTests_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A66841F754A177F5303252204CC92C31 /* Debug */,
+				463838056B2ADAD1E2B1C9E631A146C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		3E9BA2EE07C3DE03BD661324E0290C74 /* Build configuration list for PBXNativeTarget "Future_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B71843D14D330ECEF3D6137CDB7A19B4 /* Debug */,
+				40826EC06923DAE127AFE08FFC7410BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		54183B99CB662DBF3BD748C541F1CA5B /* Build configuration list for PBXNativeTarget "FutureTests_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7B2D1A62A523B4DA8889E8085100209 /* Debug */,
+				CE8576222194A218CBB7AC54F6EF8CA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		59504F2AB204C0E9E4BE4D850316E0DA /* Build configuration list for PBXNativeTarget "Future_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66F44B286BA861E614BA404B93F21854 /* Debug */,
+				2E3DA9EE34AD5193C363B5FAF79FBA0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		B98593729874236B085ACCC37D25B94C /* Build configuration list for PBXNativeTarget "FutureTests_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8F8CAEEB1C6E16CBF9D187BAA7D0821 /* Debug */,
+				D435B49CB579CEDE37C505F5DFF62881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+		BB69BAEA47946AAEE36D12CEE2DBCE73 /* Build configuration list for PBXNativeTarget "FutureTests_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C92A47D7B9D4D655EB9F53A1B93BE29A /* Debug */,
+				DFF2E48CCA031C202A5F3D1425473000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 093334B50A93B86EBF5A9627CA6BFEA2 /* Project object */;
+}

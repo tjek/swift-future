@@ -1,0 +1,34 @@
+name: Future
+options:
+  bundleIdPrefix: com.shopgun
+  deploymentTarget:
+    iOS: 8.0
+    macOS: '10.10'
+    tvOS: 9.0
+    watchOS: 2.0
+targets:
+  Future:
+    platform: [iOS, tvOS, macOS, watchOS]
+    scheme:
+      testTargets: ['FutureTests_${platform}']
+    templates: 
+      - Framework
+
+  FutureTests:
+    platform: [iOS, tvOS, macOS, watchOS]
+    type: bundle.unit-test
+    settings:
+      SWIFT_VERSION: 5.0
+    dependencies: [{target: 'Future_${platform}'}]
+    sources:
+      - path: Tests
+
+targetTemplates:
+  Framework:
+    type: framework
+    gatherCoverageData: true
+    settings:
+      SWIFT_VERSION: 5.0
+    sources: 
+      - path: Sources
+  

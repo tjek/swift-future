@@ -11,7 +11,7 @@ import Foundation
 
 public struct Future<Response> {
     public typealias Callback = (Response) -> Void
-    let run: (@escaping Callback) -> Void
+    public let run: (@escaping Callback) -> Void
     
     public init(run: @escaping (@escaping Callback) -> Void) {
         self.run = run
