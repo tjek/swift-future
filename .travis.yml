@@ -1,0 +1,8 @@
+language: swift
+osx_image: xcode10.2
+before_install: 
+- gem install xcpretty
+- gem install cocoapods
+script: 
+- xcodebuild -scheme Future_iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X' test
+- pod lib lint --allow-warnings
