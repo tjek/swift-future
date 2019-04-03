@@ -174,6 +174,7 @@ public func zipWith<A, B, FinalResponse>(
     }
 }
 
+/// Performs Future<A>, then Future<B>, then Future<C>, and then combines their responses.
 public func zip3<A, B, C>(
     _ a: Future<A>,
     _ b: Future<B>,
@@ -197,6 +198,45 @@ public func zip3With<A, B, C, FinalResponse>(
                     callback(combine(aVal, bVal, cVal))
                 }
             }
+        }
+    }
+}
+
+public func parallel<A, B>(
+    _ a: Future<A>,
+    _ b: Future<B>,
+    completesOn completionQueue: DispatchQueue = .main
+    ) -> Future<(A, B)> {
+    
+    return parallelWith(a, b, completesOn: completionQueue) { ($0, $1) }
+}
+
+/// Performs Future<A> & Future<B> in parallel on global dispatch queues, and then combines their responses on the specified completionQueue.
+public func parallelWith<A, B, FinalResponse>(
+    _ fA: Future<A>,
+    _ fB: Future<B>,
+    completesOn completionQueue: DispatchQueue = .main,
+    combine: @escaping (A, B) -> FinalResponse
+    ) -> Future<FinalResponse> {
+    
+    return Future<FinalResponse> { callback in
+        
+        let maybeCompleted: (A?, B?) -> Void = {
+            guard let a = $0, let b = $1 else { return }
+            callback(combine(a, b))
+        }
+        
+        var a: A? = nil
+        var b: B? = nil
+        
+        fA.async(on: .global(), completesOn: completionQueue).run {
+            a = $0
+            maybeCompleted(a, b)
+        }
+        
+        fB.async(on: .global(), completesOn: completionQueue).run {
+            b = $0
+            maybeCompleted(a, b)
         }
     }
 }

@@ -152,6 +152,35 @@ class FutureTests: XCTestCase {
         XCTAssertEqual(resB, 2)
         self.wait(for: [expectIsAsyncB], timeout: 5)        
     }
+    
+    func testParallel() {
+        let sharedQ = DispatchQueue(label: "SharedQueue")
+        let completionQ = DispatchQueue(label: "CompletionQueue")
+
+        let futureA = Future<Int>(value: 5).async(on: sharedQ)
+        let futureB = Future<Int>(run: { cb in
+            XCTAssertEqual(DispatchQueue.currentLabel, sharedQ.label)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                cb(3)
+            }
+        }).async(on: sharedQ)
+        
+        let futureC = parallelWith(futureA, futureB, completesOn: completionQ) { "= \($0 * $1)" }
+        
+        let expectIsAsync = self.expectation(description: "Is Async")
+        var res: String = "foo"
+        futureC.run {
+            res = $0
+            XCTAssertEqual(DispatchQueue.currentLabel, completionQ.label)
+            XCTAssertEqual(res, "= 15")
+            expectIsAsync.fulfill()
+        }
+        
+        // it is async
+        XCTAssertEqual(res, "foo")
+        self.wait(for: [expectIsAsync], timeout: 5)
+    }
 }
 
 extension DispatchQueue {
