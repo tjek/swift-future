@@ -11,8 +11,10 @@
 		050995E6136C8A87F3EBD30D1EB81729 /* FutureResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF8369084E28B6CDC992A571329636 /* FutureResultTests.swift */; };
 		0B96FAE997789736DCCED252D8FAE349 /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
 		0D174047302BD3FE077E5DE470862EBE /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
+		0E52B03E5035C876C8E666B41F86C565 /* Future+Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CDAB22544213C161960DBBDEABC143 /* Future+Measure.swift */; };
 		13F4878F631186838FA5002A2725E0AF /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */; };
 		19FC6C4C68E9B9F4E3F9C2CD3473CD9C /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
+		1D95FE85DB79E4223211806CDE620AA2 /* Future+Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CDAB22544213C161960DBBDEABC143 /* Future+Measure.swift */; };
 		1E9833B35AEA1C0D60B4BC747D545528 /* Future+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */; };
 		1FF343950ECE69826DF2B54E2158F6DE /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */; };
 		21A82C6176EDE37E44332DA3FDAF49AB /* Future+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */; };
@@ -28,6 +30,7 @@
 		52123952D7ED8CEC0FAFC57F7C868C11 /* Future.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1527A6CC3DD96F8D87B3DEC3B9951CFA /* Future.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5CBE6AF28F3B5869DA98B9FB1ADB5ED9 /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7997B1791C0E84016C20DB8132636F8C /* Future.framework */; };
 		69A85CF06520D3D1E1AADAD5E8FE7D7A /* FutureResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF8369084E28B6CDC992A571329636 /* FutureResultTests.swift */; };
+		69B21E25BDE4C66E2C869F870CB8C825 /* Future+Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CDAB22544213C161960DBBDEABC143 /* Future+Measure.swift */; };
 		6E88403B18ED7DC21E00E23C7CDD04D0 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
 		91F6F83EA3812E6E78B55585A7C2B267 /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB1109224ACCBEF7C36B15F2E541CBA /* Future.framework */; };
 		95CE3AFA21C43C361881AA85B62F216A /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
@@ -37,6 +40,7 @@
 		E2E76E0D8FD53369EDBF032BC9C78DBC /* Future.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */; };
 		E35E6E2553862C015F4BE187BA22F464 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB60B5C3CE0B2019137BDD902EA532 /* FutureTests.swift */; };
 		E5F5052EA7D967FF849E69738BA6E7B3 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56857160C6093518C610D2808494173 /* Future.swift */; };
+		EDA4D6429C21437EE0BD2C0BB6F78E1C /* Future+Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CDAB22544213C161960DBBDEABC143 /* Future+Measure.swift */; };
 		EEDA6690A357E5024F6CD715C9037029 /* Future.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7997B1791C0E84016C20DB8132636F8C /* Future.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC5B4098AD17CEC56BDEECA6F206AD47 /* Future+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */; };
 /* End PBXBuildFile section */
@@ -132,6 +136,7 @@
 		A2F3CACCF6BDAB0C33DC31BB590062FF /* Future.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Future.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56857160C6093518C610D2808494173 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Foundation.swift"; sourceTree = "<group>"; };
+		C2CDAB22544213C161960DBBDEABC143 /* Future+Measure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Measure.swift"; sourceTree = "<group>"; };
 		CF4AA6334CC33D910289C1FBBE694222 /* FutureTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Optional.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +200,7 @@
 			children = (
 				A56857160C6093518C610D2808494173 /* Future.swift */,
 				C0CF44DEA7255F740B5D2FD3EAD0B840 /* Future+Foundation.swift */,
+				C2CDAB22544213C161960DBBDEABC143 /* Future+Measure.swift */,
 				DB18F3A37DFCE892A3AA3D61F480B9E6 /* Future+Optional.swift */,
 				78A57E511B15608D09A7A189DD6427A2 /* Future+Result.swift */,
 			);
@@ -415,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40F9F77BAF6E0FB3711263363027C50C /* Future+Foundation.swift in Sources */,
+				0E52B03E5035C876C8E666B41F86C565 /* Future+Measure.swift in Sources */,
 				21A82C6176EDE37E44332DA3FDAF49AB /* Future+Optional.swift in Sources */,
 				0D174047302BD3FE077E5DE470862EBE /* Future+Result.swift in Sources */,
 				E5F5052EA7D967FF849E69738BA6E7B3 /* Future.swift in Sources */,
@@ -426,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BFCF10CE238D83A7F022FDB8E85D6C /* Future+Foundation.swift in Sources */,
+				69B21E25BDE4C66E2C869F870CB8C825 /* Future+Measure.swift in Sources */,
 				1FF343950ECE69826DF2B54E2158F6DE /* Future+Optional.swift in Sources */,
 				95CE3AFA21C43C361881AA85B62F216A /* Future+Result.swift in Sources */,
 				485D7D1EC277ADB8AE2FAFF5017320DE /* Future.swift in Sources */,
@@ -437,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F4878F631186838FA5002A2725E0AF /* Future+Foundation.swift in Sources */,
+				EDA4D6429C21437EE0BD2C0BB6F78E1C /* Future+Measure.swift in Sources */,
 				2E3CEAD3B623922E97E4C34E6DA90455 /* Future+Optional.swift in Sources */,
 				FC5B4098AD17CEC56BDEECA6F206AD47 /* Future+Result.swift in Sources */,
 				2D346CA41FAEDF303B88E64213403C83 /* Future.swift in Sources */,
@@ -457,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E9833B35AEA1C0D60B4BC747D545528 /* Future+Foundation.swift in Sources */,
+				1D95FE85DB79E4223211806CDE620AA2 /* Future+Measure.swift in Sources */,
 				35B91E4FE835221AFC8C5A7542D47EA7 /* Future+Optional.swift in Sources */,
 				0B96FAE997789736DCCED252D8FAE349 /* Future+Result.swift in Sources */,
 				48A071EDE64907E4734A379DEE104A71 /* Future.swift in Sources */,
