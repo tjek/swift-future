@@ -2,7 +2,7 @@
 
 [![Swift 5](https://img.shields.io/badge/swift-5-ED523F.svg?style=flat)](https://swift.org/download/)
 [![Build Status](https://travis-ci.com/shopgun/swift-future.svg?branch=master)](https://travis-ci.com/shopgun/swift-future)
-[![Cocoapods](https://img.shields.io/cocoapods/v/shopgun-future.svg)](http://cocoapods.org/pods/ShopGun-Future)
+[![Cocoapods](https://img.shields.io/cocoapods/v/ShopGun-Future.svg)](http://cocoapods.org/pods/ShopGun-Future)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 
 A `Future` just represents some 'work', that _may_ take some time (or not).
@@ -60,7 +60,6 @@ combinedFuture.run { result in
 
 Future areas to improve:
 
-- **Parallel(batch/zip)** - a future that performs multiple futures in parallel, and only completes once they all complete
 - **FutureOptional** - add tests and functionality similar to `Future<Result<_,_>>`
 - **Cancellable** - Somehow allow Futures to provide cancellable tokens.
 - **More utility extensions** 
