@@ -17,7 +17,7 @@ enum FutureFoundationError: Error {
 // MARK: - Decoding
 
 extension JSONDecoder {
-    public func decode<T: Decodable>(from data: Data) -> FutureResult<T> {
+    public func decodeFuture<T: Decodable>(from data: Data) -> FutureResult<T> {
         return FutureResult<T> { completion in
             completion(
                 Result(catching: {
@@ -29,7 +29,7 @@ extension JSONDecoder {
 }
 
 extension PropertyListDecoder {
-    public func decode<T: Decodable>(from data: Data) -> FutureResult<T> {
+    public func decodeFuture<T: Decodable>(from data: Data) -> FutureResult<T> {
         return FutureResult<T> { completion in
             completion(
                 Result(catching: {
@@ -42,29 +42,29 @@ extension PropertyListDecoder {
 
 extension Data {
     
-    public func decodedFromJSON<T: Decodable>() -> FutureResult<T> {
-        return JSONDecoder().decode(from: self)
+    public func decodedFutureFromJSON<T: Decodable>() -> FutureResult<T> {
+        return JSONDecoder().decodeFuture(from: self)
     }
     
-    public func decodedFromPropertyList<T: Decodable>() -> FutureResult<T> {
-        return PropertyListDecoder().decode(from: self)
+    public func decodedFutureFromPropertyList<T: Decodable>() -> FutureResult<T> {
+        return PropertyListDecoder().decodeFuture(from: self)
     }
 }
 
 extension Decodable {
-    public static func decodeJSON(from data: Data) -> FutureResult<Self> {
-        return data.decodedFromJSON()
+    public static func decodeFutureJSON(from data: Data) -> FutureResult<Self> {
+        return data.decodedFutureFromJSON()
     }
     
-    public static func decodePropertyList(from data: Data) -> FutureResult<Self> {
-        return data.decodedFromPropertyList()
+    public static func decodeFuturePropertyList(from data: Data) -> FutureResult<Self> {
+        return data.decodedFutureFromPropertyList()
     }
 }
 
 // MARK: - Encoding
 
 extension JSONEncoder {
-    public func encode<T: Encodable>(_ value: T) -> FutureResult<Data> {
+    public func encodeFuture<T: Encodable>(_ value: T) -> FutureResult<Data> {
         return FutureResult<Data> { completion in
             completion(
                 Result(catching: {
@@ -76,7 +76,7 @@ extension JSONEncoder {
 }
 
 extension PropertyListEncoder {
-    public func encode<T: Encodable>(_ value: T) -> FutureResult<Data> {
+    public func encodeFuture<T: Encodable>(_ value: T) -> FutureResult<Data> {
         return FutureResult<Data> { completion in
             completion(
                 Result(catching: {
@@ -89,20 +89,20 @@ extension PropertyListEncoder {
 
 extension Encodable {
     
-    public func encodedToJSON() -> FutureResult<Data> {
-        return JSONEncoder().encode(self)
+    public func encodedFutureToJSON() -> FutureResult<Data> {
+        return JSONEncoder().encodeFuture(self)
     }
     
-    public static func encodeToJSON(_ value: Self) -> FutureResult<Data> {
-        return value.encodedToJSON()
+    public static func encodeFutureToJSON(_ value: Self) -> FutureResult<Data> {
+        return value.encodedFutureToJSON()
     }
     
-    public func encodedToPropertyList() -> FutureResult<Data> {
-        return PropertyListEncoder().encode(self)
+    public func encodedFutureToPropertyList() -> FutureResult<Data> {
+        return PropertyListEncoder().encodeFuture(self)
     }
     
     public static func encodeToPropertyList(_ value: Self) -> FutureResult<Data> {
-        return value.encodedToPropertyList()
+        return value.encodedFutureToPropertyList()
     }
 }
 
@@ -126,7 +126,7 @@ extension Bundle {
 
 extension URLSession {
     
-    public func dataTask(with request: URLRequest) -> Future<(Data?, URLResponse?, Error?)> {
+    public func dataTaskFuture(with request: URLRequest) -> Future<(Data?, URLResponse?, Error?)> {
         return Future<(Data?, URLResponse?, Error?)> { completion in
             let task = self.dataTask(with: request) {
                 completion(($0, $1, $2))
@@ -135,8 +135,8 @@ extension URLSession {
         }
     }
     
-    public func dataTaskResult(with request: URLRequest) -> FutureResult<(data: Data, response: URLResponse)> {
-        return dataTask(with: request).map({
+    public func dataTaskFutureResult(with request: URLRequest) -> FutureResult<(data: Data, response: URLResponse)> {
+        return dataTaskFuture(with: request).map({
             switch ($0.0, $0.1, $0.2) {
             case let (data?, response?, _):
                 return .success((data, response))

@@ -33,13 +33,13 @@ let loadFileUser: FutureResult<User> = Bundle.main
 let loadStringFood: FutureResult<Food> = Future<String>
     .init(value: #"{ "type": "curry", "tastiness": 1000 }"#)
     .map({ $0.data(using: .utf8)! })
-    .flatMap(Food.decodeJSON(from:))
+    .flatMap(Food.decodeFutureJSON(from:))
 
 // Make a future that loads another user value from a network request
 let loadNetworkUser: FutureResult<User> = URLSession.shared
-    .dataTaskResult(with: URLRequest(url: URL(string: "https://foo.bar")!))
+    .dataTaskFutureResult(with: URLRequest(url: URL(string: "https://foo.bar")!))
     .mapResult({ $0.data })
-    .flatMapResult(User.decodeJSON(from:))
+    .flatMapResult(User.decodeFutureJSON(from:))
     
 // zip the 3 futures together and, if all successful, convert the response into a string.
 let combinedFuture = zipResult3With(
