@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name = "ShopGun-Future"
   s.module_name = "Future"
-  s.version = "0.2.0"
+  s.version = "0.3.0"
   s.summary = "🕰 A simple Swift Future type"
 
   s.description = <<-DESC
