@@ -103,16 +103,22 @@ extension Future {
         _ future: Future,
         delay: TimeInterval = 0,
         on queue: DispatchQueue,
+        blocksQueue: Bool = false,
         completesOn completionQueue: DispatchQueue = .main
         ) -> Future {
         
         return Future { cb in
             queue.asyncAfter(deadline: .now() + delay) {
+                var grp: DispatchGroup? = blocksQueue ? DispatchGroup() : nil
+                grp?.enter()
+                
                 future.run { value in
+                    grp?.leave()
                     completionQueue.async {
                         cb(value)
                     }
                 }
+                grp?.wait()
             }
         }
     }
@@ -120,6 +126,7 @@ extension Future {
     public func async(
         delay: TimeInterval = 0,
         on queue: DispatchQueue,
+        blocksQueue: Bool = false,
         completesOn completionQueue: DispatchQueue = .main
         ) -> Future {
         
@@ -127,6 +134,7 @@ extension Future {
             self,
             delay: delay,
             on: queue,
+            blocksQueue: blocksQueue,
             completesOn: completionQueue
         )
     }
