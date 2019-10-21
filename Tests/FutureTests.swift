@@ -99,58 +99,128 @@ class FutureTests: XCTestCase {
         let workQ = DispatchQueue(label: "WorkQueue")
         let completionQ = DispatchQueue(label: "CompletionQueue")
         
-        let expectIsAsyncA = self.expectation(description: "Is Async")
-        var resA: Int = 2
+        let expectIsAsync = self.expectation(description: "Is Async")
+        var res: Int = 2
         Future<Int>(work: {
             // is working on the correct queue
             XCTAssertEqual(DispatchQueue.currentLabel, workQ.label)
             
-            return resA * 2
+            return res * 2
         })
             .async(delay: 1, on: workQ, completesOn: completionQ)
             .run {
                 let end = Date.timeIntervalSinceReferenceDate
-                resA = $0
+                res = $0
                 
                 // work has been done
-                XCTAssertEqual(resA, 4)
+                XCTAssertEqual(res, 4)
                 // it was delayed
                 XCTAssert(end - start > 1)
                 // is completing on the correct queue
                 XCTAssertEqual(DispatchQueue.currentLabel, completionQ.label)
                 
-                expectIsAsyncA.fulfill()
+                expectIsAsync.fulfill()
         }
         
         // it is async
-        XCTAssertEqual(resA, 2)
+        XCTAssertEqual(res, 2)
         
-        self.wait(for: [expectIsAsyncA], timeout: 5)
+        self.wait(for: [expectIsAsync], timeout: 5)
+    }
+    
+    func testAsyncOnMain() {
         
-        
-        let expectIsAsyncB = self.expectation(description: "Is Async")
-        var resB: Int = 2
+        let expectIsAsync = self.expectation(description: "Is Async")
+        var res: Int = 2
         Future<Int>(work: {
             // is working on the correct queue
             XCTAssertEqual(DispatchQueue.currentLabel, DispatchQueue.main.label)
             
-            return resB * 2
+            return res * 2
         })
             .asyncOnMain()
             .run {
-                resB = $0
+                res = $0
                 
-                XCTAssertEqual(resB, 4)
+                XCTAssertEqual(res, 4)
                 
                 // is completing on the correct queue
                 XCTAssertEqual(DispatchQueue.currentLabel, DispatchQueue.main.label)
                 
-                expectIsAsyncB.fulfill()
+                expectIsAsync.fulfill()
         }
         
         // it is async
-        XCTAssertEqual(resB, 2)
-        self.wait(for: [expectIsAsyncB], timeout: 5)        
+        XCTAssertEqual(res, 2)
+        self.wait(for: [expectIsAsync], timeout: 5)
+    }
+    
+    func testAsyncBlockingQueue() {
+        
+        let start = Date.timeIntervalSinceReferenceDate
+        
+        let workQ = DispatchQueue(label: "WorkQueue")
+        let completionQ = DispatchQueue(label: "CompletionQueue")
+        
+        let expectIsAsync = self.expectation(description: "Is Async")
+        var res: Int = 2
+        Future<Int>(run: { cb in
+            // is working on the correct queue
+            XCTAssertEqual(DispatchQueue.currentLabel, workQ.label)
+            
+            // wait a second before completing the work
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                XCTAssertEqual(res, 2)
+                res *= 2
+                cb(res)
+            }
+        })
+            .async(delay: 0, on: workQ, blocksQueue: true, completesOn: completionQ)
+            .run { returnedRes in
+                let end = Date.timeIntervalSinceReferenceDate
+                
+                // Note: this callback occurs _after_ the queue is unblocked
+                // so returnedRes may not equal res (as the other work may have already occurred.
+                
+                // work has been done
+                XCTAssertEqual(returnedRes, 4)
+                // it was delayed
+                XCTAssert(end - start > 1)
+                // is completing on the correct queue
+                XCTAssertEqual(DispatchQueue.currentLabel, completionQ.label)
+        }
+        
+        // start some other work on the same queue.
+        Future<Int>(work: {
+            // is working on the correct queue
+            XCTAssertEqual(DispatchQueue.currentLabel, workQ.label)
+
+            // the previously defined future has been run first
+            XCTAssertEqual(res, 4)
+            
+            return res + 1
+        })
+            .async(delay: 0, on: workQ, blocksQueue: true, completesOn: completionQ)
+            .run {
+                let end = Date.timeIntervalSinceReferenceDate
+                res = $0
+                
+                // work has been done (after the previous work)
+                XCTAssertEqual(res, 5)
+                // it was delayed (waiting for prev work to finish)
+                XCTAssert(end - start > 1)
+                // is completing on the correct queue
+                XCTAssertEqual(DispatchQueue.currentLabel, completionQ.label)
+                
+                expectIsAsync.fulfill()
+        }
+        
+        // it is async - the res hasnt been changed yet
+        XCTAssertEqual(res, 2)
+        
+        self.wait(for: [expectIsAsync], timeout: 5)
+        
+        XCTAssertEqual(res, 5)
     }
     
     func testParallel() {

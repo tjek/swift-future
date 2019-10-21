@@ -109,7 +109,7 @@ extension Future {
         
         return Future { cb in
             queue.asyncAfter(deadline: .now() + delay) {
-                var grp: DispatchGroup? = blocksQueue ? DispatchGroup() : nil
+                let grp: DispatchGroup? = blocksQueue ? DispatchGroup() : nil
                 grp?.enter()
                 
                 future.run { value in
