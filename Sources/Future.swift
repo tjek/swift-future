@@ -62,7 +62,6 @@ extension Future {
     
     /**
      Run both the receiver and the other Future, and once both are finished, combines the 2 responses into a tuple.
-     The completion callback is performed on the `completionQueue`, which is `.main` by default. default.
      */
     public func zipped<OtherResponse>(
         _ other: Future<OtherResponse>
@@ -73,7 +72,6 @@ extension Future {
     
     /**
      Run both the receiver and the other Future, and once both are finished, allows you to combine the 2 responses into a final response type.
-     The completion callback is performed on the `completionQueue`, which is `.main` by default.
      */
     public func zippedWith<OtherResponse, FinalResponse>(
         _ other: Future<OtherResponse>,
