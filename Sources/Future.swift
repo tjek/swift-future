@@ -246,3 +246,50 @@ public func parallelWith<A, B, FinalResponse>(
         }
     }
 }
+
+public func parallel3<A, B, C>(
+    _ a: Future<A>,
+    _ b: Future<B>,
+    _ c: Future<C>,
+    completesOn completionQueue: DispatchQueue = .main
+    ) -> Future<(A, B, C)> {
+    
+    return parallel3With(a, b, c, completesOn: completionQueue) { ($0, $1, $2) }
+}
+
+/// Performs Future<A>, Future<B>, & Future<C> in parallel on global dispatch queues, and then combines their responses on the specified completionQueue.
+public func parallel3With<A, B, C, FinalResponse>(
+    _ fA: Future<A>,
+    _ fB: Future<B>,
+    _ fC: Future<C>,
+    completesOn completionQueue: DispatchQueue = .main,
+    combine: @escaping (A, B, C) -> FinalResponse
+    ) -> Future<FinalResponse> {
+    
+    return Future<FinalResponse> { callback in
+        
+        let maybeCompleted: (A?, B?, C?) -> Void = {
+            guard let a = $0, let b = $1, let c = $2 else { return }
+            callback(combine(a, b, c))
+        }
+        
+        var a: A? = nil
+        var b: B? = nil
+        var c: C? = nil
+        
+        fA.async(on: .global(), completesOn: completionQueue).run {
+            a = $0
+            maybeCompleted(a, b, c)
+        }
+        
+        fB.async(on: .global(), completesOn: completionQueue).run {
+            b = $0
+            maybeCompleted(a, b, c)
+        }
+        
+        fC.async(on: .global(), completesOn: completionQueue).run {
+            c = $0
+            maybeCompleted(a, b, c)
+        }
+    }
+}
