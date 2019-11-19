@@ -101,6 +101,19 @@ extension Future {
                 return $0
             }
     }
+    
+    /// Return a non-Result Future, where the failure case is mapped to a success value
+    public func replaceError<Success, Failure>(with errorMap: @escaping (Failure) -> Success) -> Future<Success>
+        where Response == Result<Success, Failure> {
+            return self.map { res in
+                switch res {
+                case .success(let success):
+                    return success
+                case .failure(let error):
+                    return errorMap(error)
+                }
+            }
+    }
 }
 
 /**

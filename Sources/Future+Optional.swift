@@ -85,4 +85,17 @@ extension Future {
                 return $0
             }
     }
+    
+    /// Return a non-optional Future, where the nil case is mapped to a non-optional value.
+    public func replaceNone<Value>(with noneValue: @escaping () -> Value) -> Future<Value>
+        where Response == Optional<Value> {
+            return self.map { res in
+                switch res {
+                case let success?:
+                    return success
+                case nil:
+                    return noneValue()
+                }
+            }
+    }
 }
