@@ -26,6 +26,10 @@ extension Future {
     public init(work: @escaping () -> Response) {
         self.init(run: { $0(work()) })
     }
+    
+    public func fireAndForget() {
+        self.run({ _ in })
+    }
 }
 
 extension Future {
