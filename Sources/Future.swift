@@ -96,6 +96,43 @@ extension Future {
 }
 
 extension Future {
+    /// Returns a new Future whose completion handler is called on the specified queue.
+    public func receiving(
+        on queue: DispatchQueue
+    ) -> Future {
+        return Future { cb in
+            self.run { value in
+                queue.async {
+                    cb(value)
+                }
+            }
+        }
+    }
+    
+    /// Returns a new Future whose work is performed on the specified queue.
+    /// Use `delay` to postpone the running of the future.
+    /// Use `blocksQueue` to make the queue block until the Future finishes.
+    public func performing(
+        on queue: DispatchQueue,
+        delay: TimeInterval = 0,
+        blocksQueue: Bool = false
+    ) -> Future {
+        return Future { cb in
+            queue.asyncAfter(deadline: .now() + delay) {
+                let grp: DispatchGroup? = blocksQueue ? DispatchGroup() : nil
+                grp?.enter()
+                
+                self.run { value in
+                    grp?.leave()
+                    cb(value)
+                }
+                grp?.wait()
+            }
+        }
+    }
+}
+
+extension Future {
     
     public static func async(
         _ future: Future,
@@ -104,21 +141,9 @@ extension Future {
         blocksQueue: Bool = false,
         completesOn completionQueue: DispatchQueue = .main
         ) -> Future {
-        
-        return Future { cb in
-            queue.asyncAfter(deadline: .now() + delay) {
-                let grp: DispatchGroup? = blocksQueue ? DispatchGroup() : nil
-                grp?.enter()
-                
-                future.run { value in
-                    grp?.leave()
-                    completionQueue.async {
-                        cb(value)
-                    }
-                }
-                grp?.wait()
-            }
-        }
+        return future
+            .performing(on: queue, delay: delay, blocksQueue: blocksQueue)
+            .receiving(on: completionQueue)
     }
     
     public func async(
