@@ -171,6 +171,59 @@ extension Future {
     }
 }
 
+// MARK: -
+
+extension Future {
+
+    /**
+     Returns a new future, whose `run` function is a debounced version of the receiving future's `run` function.
+     
+     This means that if you repeatedly call `run` on the returned future, it will only perform the future's 'work' after you stop calling run for `delay` seconds.
+     
+     - Parameter delay: A `TimeInterval` specifying the number of seconds that needs to pass without run being called before it is actually executed.
+     - Parameter queue: The queue to perform the `run` on. Defaults to the main queue.
+
+     - Returns: A new Future that will only perform the work in `run` if `delay` time passes between invocations.
+     */
+    public func debounced(delay: TimeInterval, on queue: DispatchQueue = .main) -> Future {
+        var currentWorkItem: DispatchWorkItem?
+        
+        return Future { cb in
+            currentWorkItem?.cancel()
+            currentWorkItem = DispatchWorkItem {
+                self.run(cb)
+            }
+            queue.asyncAfter(deadline: .now() + delay, execute: currentWorkItem!)
+        }
+    }
+    
+    /**
+     Returns a new future, whose `run` function is a throttled version of the receiving future's `run` function.
+     
+     This means that if you repeatedly call `run` on the returned Future, it will only perform the future's 'work' at most once every `delay` seconds.
+     
+     - Parameter delay: A `TimeInterval` specifying the number of seconds that needs to pass between each execution of `run`.
+     - Parameter queue: The queue to perform the `run` on. Defaults to the main queue.
+
+     - Returns: A new Future that will only perform the work in `run` once every `delay` seconds, regardless of how often it is called.
+     */
+    public func throttled(delay: TimeInterval, on queue: DispatchQueue = .main) -> Future {
+        var currentWorkItem: DispatchWorkItem?
+        
+        return Future { cb in
+            guard currentWorkItem == nil else { return }
+            
+            currentWorkItem = DispatchWorkItem {
+                self.run(cb)
+                currentWorkItem = nil
+            }
+            queue.asyncAfter(deadline: .now() + delay, execute: currentWorkItem!)
+        }
+    }
+}
+
+// MARK: -
+
 /**
  Performs the array of Futures in series, one after the other.
  */
