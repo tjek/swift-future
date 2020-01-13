@@ -76,13 +76,18 @@ extension Future {
     }
     
     public func observeOptionalSome<Value>(
+        on queue: DispatchQueue? = nil,
         _ callback: @escaping (Value) -> Void
         ) -> Future
         where Response == Optional<Value> {
             
-            return self.mapOptional {
-                callback($0)
-                return $0
+            return self.mapOptional { val in
+                if let q = queue {
+                    q.async { callback(val) }
+                } else {
+                    callback(val)
+                }
+                return val
             }
     }
     
@@ -98,4 +103,20 @@ extension Future {
                 }
             }
     }
+    
+    /// Always retry if the optional result is nil, otherwise only when shouldRetry returns true (false by default).
+    public func retryOptional<Value>(
+        times maxRetryCount: Int,
+        while shouldRetry: @escaping (Value) -> Bool = { _ in false }
+    ) -> Future
+        where Response == Value? {
+            return self.retry(times: maxRetryCount) {
+                if let val = $0 {
+                    return shouldRetry(val)
+                } else {
+                    return true
+                }
+            }
+    }
+    
 }

@@ -30,6 +30,12 @@ extension Future {
     public func fireAndForget() {
         self.run({ _ in })
     }
+    
+    public static func build(future: @escaping () -> Future) -> Future {
+        return Future(run: { cb in
+            future().run(cb)
+        })
+    }
 }
 
 extension Future {
@@ -87,14 +93,21 @@ extension Future {
     
     /**
      Allows you to observe the response of the future, without modifying it.
+     - parameter queue: The queue on which to perform the observe `callback`. If not specified, `callback`will be run on the current queue.
+     - parameter callback: The callback to perform, passing the response of the receiver.
      */
     public func observe(
+        on queue: DispatchQueue? = nil,
         _ callback: @escaping (Response) -> Void
         ) -> Future {
         
-        return self.map {
-            callback($0)
-            return $0
+        return self.map { val in
+            if let q = queue {
+                q.async { callback(val) }
+            } else {
+                callback(val)
+            }
+            return val
         }
     }
 }
@@ -219,6 +232,20 @@ extension Future {
             }
             queue.asyncAfter(deadline: .now() + delay, execute: currentWorkItem!)
         }
+    }
+    
+    public func retry(
+        times maxRetryCount: Int,
+        while shouldRetry: @escaping (Response) -> Bool
+    ) -> Future {
+        return self
+            .flatMap({ val in
+                if maxRetryCount > 0, shouldRetry(val) {
+                    return self.retry(times: maxRetryCount - 1, while: shouldRetry)
+                } else {
+                    return Future(value: val)
+                }
+            })
     }
 }
 

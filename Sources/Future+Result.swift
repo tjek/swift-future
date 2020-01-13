@@ -81,24 +81,34 @@ extension Future {
     }
     
     public func observeResultSuccess<Success, Failure>(
+        on queue: DispatchQueue? = nil,
         _ callback: @escaping (Success) -> Void
         ) -> Future
         where Response == Result<Success, Failure> {
             
-            return self.mapResult {
-                callback($0)
-                return $0
+            return self.mapResult { val in
+                if let q = queue {
+                    q.async { callback(val) }
+                } else {
+                    callback(val)
+                }
+                return val
             }
     }
     
     public func observeResultError<Success, Failure>(
+        on queue: DispatchQueue? = nil,
         _ callback: @escaping (Failure) -> Void
         ) -> Future
         where Response == Result<Success, Failure> {
             
-            return self.mapResultError {
-                callback($0)
-                return $0
+            return self.mapResultError { err in
+                if let q = queue {
+                    q.async { callback(err) }
+                } else {
+                    callback(err)
+                }
+                return err
             }
     }
     
@@ -111,6 +121,28 @@ extension Future {
                     return success
                 case .failure(let error):
                     return errorMap(error)
+                }
+            }
+    }
+    
+    public func eraseToAnyError<Success, Failure>() -> FutureResult<Success>
+        where Response == Result<Success, Failure> {
+            self.mapResultError({ $0 as Error })
+    }
+    
+    /// By default always retry if the Result is a failure.
+    public func retryResult<Success, Failure>(
+        times maxRetryCount: Int,
+        whileFailure shouldRetryFailure: @escaping (Failure) -> Bool = { _ in true },
+        whileSuccess shouldRetrySuccess: @escaping (Success) -> Bool = { _ in false }
+    ) -> Future
+        where Response == Result<Success, Failure> {
+            return self.retry(times: maxRetryCount) {
+                switch $0 {
+                case .success(let success):
+                    return shouldRetrySuccess(success)
+                case .failure(let error):
+                    return shouldRetryFailure(error)
                 }
             }
     }
