@@ -7,6 +7,8 @@
 //
 //  Copyright (c) 2019 ShopGun. All rights reserved.
 
+import Foundation
+
 public typealias FutureOptional<Value> = Future<Optional<Value>>
 
 extension Future {

@@ -30,4 +30,3 @@ targetTemplates:
       SWIFT_VERSION: 5.0
     sources: 
       - path: Sources
-  
