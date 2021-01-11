@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name = "ShopGun-Future"
   s.module_name = "Future"
-  s.version = "0.4.0"
+  s.version = "0.5.0"
   s.summary = "🕰 A simple Swift Future type"
 
   s.description = <<-DESC
@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
   s.authors = {
     "Laurie Hufford" => "lh@shopgun.com"
   }
-  s.social_media_url = "https://twitter.com/shopgun"
 
   s.source = {
     :git => "https://github.com/shopgun/swift-future.git",
@@ -30,7 +29,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = "5.0"
 
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
   s.osx.deployment_target = "10.10"
   s.watchos.deployment_target = "2.0"
 
