@@ -43,24 +43,3 @@ let combinedFuture = zipResult3With(
     .mapResult({
         "\($0.user.name) likes \($0.food.type) x\($0.food.tastiness)... networkUser: '\($0.networkUser.name)'"
     })
-
-//
-//combinedFuture.run { result in
-//    print(result)
-//}
-//enum TestError: Error { case foo }
-//let f = batchResult([
-//    Future<Result<Int, TestError>>(work: { .failure(.foo) }),
-//    Future<Result<Int, TestError>>(work: { .success(1) }),
-//    Future<Result<Int, TestError>>(work: { .success(5) }),
-//    ])
-//    .map { try? $0.get() }
-//
-//f.run {
-//    print($0)
-//}
-//
-////    .run { (res: Result<[Int], Error>) in
-//////        print(res)
-////}
-
