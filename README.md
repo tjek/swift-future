@@ -1,6 +1,6 @@
 # 🕰 Future
 
-[![Swift 5](https://img.shields.io/badge/swift-5-ED523F.svg?style=flat)](https://swift.org/download/)
+![Swift 5](https://github.com/shopgun/swift-future/workflows/Swift/badge.svg)
 [![Cocoapods](https://img.shields.io/cocoapods/v/ShopGun-Future.svg)](http://cocoapods.org/pods/ShopGun-Future)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 
