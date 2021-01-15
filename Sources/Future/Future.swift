@@ -110,11 +110,12 @@ extension Future {
 extension Future {
     /// Returns a new Future whose completion handler is called on the specified queue.
     public func receiving(
-        on queue: DispatchQueue
+        on queue: DispatchQueue,
+        delay: TimeInterval = 0
     ) -> Future {
         return Future { cb in
             self.run { value in
-                queue.async {
+                queue.asyncAfter(deadline: .now() + delay) {
                     cb(value)
                 }
             }
