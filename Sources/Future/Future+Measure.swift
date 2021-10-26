@@ -39,6 +39,21 @@ public enum MeasureTimeScale {
 
 extension Future {
     
+    /// After the future is run, appends the duration of the run to the output.
+    public func measure() -> Future<(Response, TimeInterval)> {
+        return Future<(Response, TimeInterval)> { callback in
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            self.run {
+                let end = CFAbsoluteTimeGetCurrent()
+                let duration = (end - start)
+                
+                callback(($0, duration))
+            }
+        }
+    }
+    
     /// After the future is run, it calls the `durationCallback` on the main queue, passing how long it took to execute the current future.
     public func measure(_ durationCallback: @escaping (TimeInterval) -> Void) -> Future {
         return Future { callback in
