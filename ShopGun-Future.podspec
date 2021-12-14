@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name = "ShopGun-Future"
   s.module_name = "Future"
-  s.version = "0.5.0"
+  s.version = "1.0.7"
   s.summary = "🕰 A simple Swift Future type"
 
   s.description = <<-DESC
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.license = "MIT"
 
   s.authors = {
-    "Laurie Hufford" => "lh@shopgun.com"
+    "Laurie Hufford" => "lh@tjek.com"
   }
 
   s.source = {
