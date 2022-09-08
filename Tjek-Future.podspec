@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name = "ShopGun-Future"
+  s.name = "Tjek-Future"
   s.module_name = "Future"
-  s.version = "0.5.2"
+  s.version = "0.5.3"
   s.summary = "🕰 A simple Swift Future type"
 
   s.description = <<-DESC
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   This library includes a number of extra wrappers around common operations, allowing them to easily chained with other futures.
   DESC
 
-  s.homepage = "https://github.com/shopgun/swift-future"
+  s.homepage = "https://github.com/tjek/swift-future"
 
   s.license = "MIT"
 
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   }
 
   s.source = {
-    :git => "https://github.com/shopgun/swift-future.git",
+    :git => "https://github.com/tjek/swift-future.git",
     :tag => s.version
   }
 

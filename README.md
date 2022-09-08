@@ -1,7 +1,7 @@
 # 🕰 Future
 
-![Swift 5](https://github.com/shopgun/swift-future/workflows/Swift/badge.svg)
-[![Cocoapods](https://img.shields.io/cocoapods/v/ShopGun-Future.svg)](http://cocoapods.org/pods/ShopGun-Future)
+![Swift 5](https://github.com/tjek/swift-future/workflows/Swift/badge.svg)
+[![Cocoapods](https://img.shields.io/cocoapods/v/Tjek-Future.svg)](http://cocoapods.org/pods/Tjek-Future)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 
 A `Future` just represents some 'work', that _may_ take some time (or not).

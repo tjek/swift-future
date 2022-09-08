@@ -3,7 +3,7 @@
 //  FutureTests
 //
 //  Created by Laurie Hufford on 27/03/2019.
-//  Copyright © 2019 ShopGun. All rights reserved.
+//  Copyright © 2019 Tjek. All rights reserved.
 //
 
 import XCTest
